@@ -7,8 +7,10 @@ use crate::parser::resource::{build_resources, ResourceValue, ResourcesParseTree
 use serde_json::Value;
 
 pub mod integrations;
+pub mod ir;
 pub mod parser;
-pub mod semantic;
+pub mod specification;
+pub mod synthesizer;
 
 pub trait CustomIntegration {
     fn is_type(resource_type: &str) -> bool;
@@ -38,6 +40,7 @@ pub struct CdkBuilder {
     imports: Vec<Import>,
 }
 
+#[derive(Debug)]
 pub struct CloudformationParseTree {
     pub parameters: Parameters,
     pub mappings: MappingsParseTree,
